@@ -25,7 +25,7 @@ module.exports = {
  role: 0,
  shortDescription: { vi: "", en: "" },
  longDescription: { vi: "", en: "" },
- category: "𝗨𝗦𝗘𝗙𝗨𝗟",
+ category: "𝗥𝘆ū_",
  guide: { en: "" },
  envConfig: {}
  },
