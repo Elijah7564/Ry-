@@ -14,7 +14,7 @@ module.exports = {
     longDescription: {
       en: "This command uses the Bible API to send a random Bible verse."
     },
-    category: "𝗨𝗦𝗘𝗙𝗨𝗟",
+    category: "𝗥𝘆ū_",
     guide: {
       en: "To use the command, type {pn} bibleverse. The bot will then send a random Bible verse."
     }
