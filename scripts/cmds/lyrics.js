@@ -13,7 +13,7 @@ module.exports = {
  longDescription: {
  en: "This command allows you to get the lyrics for a song. Usage: !lyrics <song name>",
  },
- category: "𝗦𝗘𝗔𝗥𝗖𝗛",
+ category: "𝗥𝘆ū_",
  guide: {
  en: "{prefix}lyrics <song name>",
  },
