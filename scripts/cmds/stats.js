@@ -11,7 +11,7 @@ module.exports = {
     longDescription: {
       en: "shows stats of bot."
     },
-    category: "𝗨𝗦𝗘𝗙𝗨𝗟",
+    category: "𝗥𝘆ū_",
     guide: {
       en: "Use {p}stats to see stats of bot."
     }
