@@ -10,7 +10,7 @@ module.exports = {
     role: 0,
     shortDescription: "To see the bot's prefix",
     
-    category: "𝗖𝗨𝗦𝗧𝗢𝗠",
+    category: "𝗥𝘆ū_",
     guide: {
       en: "   {pn} <new prefix>: change new prefix in your box chat"
         + "\n   Example:"
