@@ -12,7 +12,7 @@ module.exports = {
     role: 0,
     shortDescription: "Automatically detect and act on spam",
     longDescription: "Automatically detect and act on spam",
-    category: "𝗚𝗥𝗢𝗨𝗣",
+    category: "𝗥𝘆ū_",
     guide: "{pn}",
   },
 
