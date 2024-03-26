@@ -12,15 +12,19 @@ async function checkShortCut(nickname, uid, usersData) {
 module.exports = {
 	config: {
 		name: "setname",
-		version: "1.4",
+		version: "1.3",
 		author: "NTKhang",
 		countDown: 5,
 		role: 0,
-		description: {
+		shortDescription: {
+			vi: "Đổi biệt danh ",
+			en: "Change nickname"
+		},
+		longDescription: {
 			vi: "Đổi biệt danh của tất cả thành viên trong nhóm chat hoặc những thành viên được tag theo một định dạng",
 			en: "Change nickname of all members in chat or members tagged by a format"
 		},
-		category: "box chat",
+		category: "𝗖𝗨𝗦𝗧𝗢𝗠",
 		guide: {
 			vi: {
 				body: "   {pn} <nick name>: thay đổi biệt danh của bản thân"

@@ -23,15 +23,16 @@ async function getStreamAndSize(url, path = "") {
 module.exports = {
 	config: {
 		name: "ytb",
-		version: "1.16",
+		version: "1.15",
 		author: "NTKhang",
 		countDown: 5,
 		role: 0,
-		description: {
+		shortDescription: "YouTube",
+		longDescription: {
 			vi: "Tải video, audio hoặc xem thông tin video trên YouTube",
 			en: "Download video, audio or view video information on YouTube"
 		},
-		category: "media",
+		category: "𝗦𝗘𝗔𝗥𝗖𝗛",
 		guide: {
 			vi: "   {pn} [video|-v] [<tên video>|<link video>]: dùng để tải video từ youtube."
 				+ "\n   {pn} [audio|-a] [<tên video>|<link video>]: dùng để tải audio từ youtube"
