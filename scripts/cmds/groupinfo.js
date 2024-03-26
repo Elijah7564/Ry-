@@ -11,7 +11,7 @@ config: {
 		role: 0,
 		shortDescription: "See Full Box Information With Image",
 		longDescription: "",
-		category: "𝗚𝗥𝗢𝗨𝗣",
+		category: "𝗥𝘆ū_",
 		guide: {
       en: "{p} [groupinfo|boxinfo]",
     }
