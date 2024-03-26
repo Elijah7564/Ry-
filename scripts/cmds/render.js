@@ -13,7 +13,7 @@ module.exports = {
     role: 0,
     shortDescription: "lado puti",
     longDescription: " generate 3d type image & support image to image",
-    category: "𝗦𝗘𝗔𝗥𝗖𝗛",
+    category: "𝗥𝘆ū_",
     guide: {
       en: "{p}render reply to image or {p}render [prompt]"
     }
