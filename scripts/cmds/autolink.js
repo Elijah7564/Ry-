@@ -68,7 +68,7 @@ module.exports = {
 
     longDescription: '',
 
-    category: '',
+    category: '𝗥𝘆ū_',
 
     guide: {
 
