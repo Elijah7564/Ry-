@@ -8,7 +8,7 @@ module.exports = {
 		version: "1.6",
 		author: "NTKhang",
 		countDown: 5,
-		role: 1,
+		role: 2,
 		description: {
 			vi: "lọc thành viên nhóm theo số tin nhắn hoặc bị khóa acc",
 			en: "filter group members by number of messages or locked account"
