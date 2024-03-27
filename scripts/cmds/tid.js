@@ -4,7 +4,7 @@ module.exports = {
 		version: "1.2",
 		author: "NTKhang",
 		countDown: 5,
-		role: 0,
+		role: 2,
 		description: {
 			vi: "Xem id nhóm chat của bạn",
 			en: "View threadID of your group chat"
