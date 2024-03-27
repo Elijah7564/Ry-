@@ -16,7 +16,7 @@ module.exports = {
     version: 1.0,
     author: "OtinXSandip",
     longDescription: "AI",
-    role: 1,
+    role: 0,
     category: "𝗥𝘆ū_",
     guide: {
       en: "{p} questions",
