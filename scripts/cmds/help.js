@@ -53,13 +53,13 @@ msg+=`\n┃『${category.toUpperCase()}45𝗰𝗺𝗱𝘀』`;
             const cmds = names.slice(i, i + 1).map((item) => `━🕸️━${item}`);
             msg += `\n┃ ${cmds.join(" ".repeat(Math.max(1, 10 - cmds.join("").length)))}`;
           }
-          msg +=`\n╰━━━━━━━━━━━╯`;
+          msg +=`\n╰━━━━━━━━━━━╯/n꧁𝗘𝗟𝗜𝗔𝗦𝗕𝗔𝗥𝗨𝗧꧂`;
         }
       });
 
       const totalCommands = commands.size;
 
-      msg += `꧁𝗘𝗟𝗜𝗔𝗦𝗕𝗔𝗥𝗨𝗧꧂`;
+      msg += ``;
 
 msg+=``;
 
