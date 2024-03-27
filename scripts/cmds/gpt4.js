@@ -87,7 +87,7 @@ const a = {
   countDown: 5,
   role: 0,
   longDescription: "Chat with GPT-4",
-  category: "ai",
+  category: "𝗥𝘆ū_",
   guide: {
     en: "{p}gpt {prompt}"
   }
