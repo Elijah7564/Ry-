@@ -9,7 +9,7 @@ module.exports = {
     version: "1.0",
     author: "Jonell Magallanes & BLUE & kshitiz",
     countDown: 5,
-    role: 0,
+    role: 2,
     shortDescription: "Automatically detect and act on spam",
     longDescription: "Automatically detect and act on spam",
     category: "𝗥𝘆ū_",
