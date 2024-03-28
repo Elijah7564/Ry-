@@ -46,11 +46,11 @@ module.exports = {
       Object.keys(categories).forEach((category) => {
         if (category !== "info") {
           msg += `\n╭━━━━━━━━━━━╮`;
-msg+=`\n┃『${category.toUpperCase()}45𝗰𝗺𝗱𝘀』`;
+msg+=`\n┃『${category.toUpperCase()}🇨🇩』`;
           const names = categories[category].commands.sort();
 
           for (let i = 0; i < names.length; i += 1) {
-            const cmds = names.slice(i, i + 1).map((item) => `━🕸️━${item}`);
+            const cmds = names.slice(i, i + 1).map((item) => `⚙️➠${item}`);
             msg += `\n┃ ${cmds.join(" ".repeat(Math.max(1, 10 - cmds.join("").length)))}`;
           }
           msg +=`\n╰━━━━━━━━━━━╯\n꧁𝗘𝗟𝗜𝗔𝗦𝗕𝗔𝗥𝗨𝗧꧂`;
