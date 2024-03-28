@@ -40,7 +40,7 @@ module.exports = {
        confirmThisThread: "Veuillez réagir à ce message pour confirmer le changement de préfixe dans votre boîte de discussion",
        successGlobal: "Le préfixe du bot système a été remplacé par : %1",
        successThisThread: "Le préfixe de votre boîte de discussion a été modifié par : %1",
-       myPrefix: "╭━━━━━━━━━━━╮\n┃𝖬𝖮𝖭 𝖯𝖱É𝖥𝖨𝖷𝖤:%2\n┃━━━━━━━━━━━\n┃ 𝗘𝗟𝗜𝗔𝗦.𝗕𝗔𝗥𝗨𝗧𝗜 \n╰━━━━━━━━━━━╯"
+       myPrefix: "╭─────────╮\n |⚙️𝗉𝗋𝖾𝖿𝗂𝗑𝖾 ➠ %2  |\n╰─────────╯"
    },
     
     en:{
@@ -50,7 +50,7 @@ module.exports = {
       confirmThisThread: "Please react to this message to confirm change prefix in your box chat",
       successGlobal: "Changed prefix of system bot to: %1",
       successThisThread: "Changed prefix in your box chat to: %1",
-      myPrefix: "╭━━━━━━━━━━╮\n┃𝖬𝖸 𝖯𝖱𝖤𝖥𝖨𝖷 : %2\n┃━━━━━━━━━━\n┃𝗘𝗟𝗜𝗔𝗦.𝗕𝗔𝗥𝗨𝗧𝗜 \n╰━━━━━━━━━━╯"
+      myPrefix: "╭─────────╮\n |⚙️𝗉𝗋𝖾𝖿𝗂𝗑 ➠   %2  |\n╰─────────╯"
     }
   },
 
