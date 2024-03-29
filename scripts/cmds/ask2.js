@@ -5,7 +5,7 @@ const Prefixes = [
   'ai',
   'chatgpt',
   'gpt',
-  'itachi',
+  'ryuzaki',
 ];
 
 module.exports = {
@@ -38,7 +38,7 @@ module.exports = {
       const answer = response.data.answer;
 
  
-    await message.reply(`📝 𝗖𝗵𝗮𝘁𝗚𝗣𝗧:\n\n${answer}`);
+    await message.reply(`⚙️\n${answer}\n⚙️𝑅𝑌𝑈𝑍𝐴𝐾𝐼 🇨🇩`);
 
     } catch (error) {
       console.error("Error:", error.message);
