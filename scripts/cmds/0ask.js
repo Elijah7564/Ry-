@@ -48,7 +48,7 @@ fr: { prompt: "⚙️➠𝑅𝑌𝑈𝑍𝐴𝐾𝐼 à 𝑣𝑜𝑡𝑟𝑒 �
       const response = await axios.get(`https://sandipbaruwal.onrender.com/gpt?prompt=${encodeURIComponent(prompt)}`);
       const answer = response.data.answer;
 
-      await message.reply({ body: `━━━━━━━━━━━━━\n${answer}\n╭━━━━━━━━━━╮\n┃𝗘𝗟𝗜𝗔𝗦 𝗕𝗔𝗥𝗨𝗧𝗜┃\n╰━━━━━━━━━━╯` });
+      await message.reply({ body: `╭────── ➠\n⚙️${answer}\n╰────────❍` });
     } catch (error) {
       console.error("Erreur:", error.message);
     }
