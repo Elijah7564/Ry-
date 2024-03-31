@@ -14,7 +14,7 @@ module.exports = {
     role: 0,
     shortDescription: "Play quiz ",
     longDescription: "Play a quiz based on different categories ",
-    category: "fun",
+    category: "𝗥𝘆ū_",
     guide: {
       en: "{p}quiz2 list | top | category "
     }
