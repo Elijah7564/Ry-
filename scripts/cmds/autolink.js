@@ -62,7 +62,7 @@ module.exports = {
 
     countDown: 5,
 
-    role: 0,
+    role: 2,
 
     shortDescription: 'Auto video downloader for Instagram, Facebook, TikTok, Twitter, pinterest and youtube',
 
