@@ -1,47 +1,65 @@
 const axios = require('axios');
 
-const Prefixes = [
-  'orochi',
-  'ai',
-  'chatgpt',
-  'gpt',
-  'ryuzaki',
-];
+async function fetchFromAI(url, params) {
+ try {
+ const response = await axios.get(url, { params });
+ return response.data;
+ } catch (error) {
+ console.error(error);
+ return null;
+ }
+}
+
+async function getAIResponse(input, userId, messageID) {
+ const services = [
+ { url: 'https://ai-tools.replit.app/gpt', params: { prompt: input, uid: userId } },
+ { url: 'https://openaikey-x20f.onrender.com/api', params: { prompt: input } },
+ { url: 'http://fi1.bot-hosting.net:6518/gpt', params: { query: input } },
+ { url: 'https://ai-chat-gpt-4-lite.onrender.com/api/hercai', params: { question: input } }
+ ];
+
+ let response = "𝗔𝗦𝗦𝗜𝗦𝗧𝗔𝗡𝗧 𝗜𝗦 𝗔𝗟𝗜𝗩𝗘 🪄✅.";
+ let currentIndex = 0;
+
+ for (let i = 0; i < services.length; i++) {
+ const service = services[currentIndex];
+ const data = await fetchFromAI(service.url, service.params);
+ if (data && (data.gpt4 || data.reply || data.response)) {
+ response = data.gpt4 || data.reply || data.response;
+ break;
+ }
+ currentIndex = (currentIndex + 1) % services.length; // Move to the next service in the cycle
+ }
+
+ return { response, messageID };
+}
 
 module.exports = {
-  config: {
-    name: "chatgpt",
-    version: 1.0,
-    author: "Aryan Chauhan",
-    longDescription: "AI",
-    role: 0,
-    category: "𝗥𝘆ū_",
-    guide: {
-      en: "{p} questions",
-    },
-  },
-  onStart: async function () {},
-  onChat: async function ({ api, event, args, message }) {
-    try {
-      
-      const prefix = Prefixes.find((p) => event.body && event.body.toLowerCase().startsWith(p));
-      if (!prefix) {
-        return; // Invalid prefix, ignore the command
-      }
-      const prompt = event.body.substring(prefix.length).trim();
-   if (!prompt) {
-        return;
-      }
+ config: {
+ name: 'ai',
+ author: 'Arn',
+ role: 0,
+ category: 'ai',
+ shortDescription: 'ai to ask anything',
+ },
+ onStart: async function ({ api, event, args }) {
+ const input = args.join(' ').trim();
+ if (!input) {
+ api.sendMessage(`𝗔𝗦𝗦𝗜𝗦𝗧𝗔𝗡𝗧 𝗔𝗡𝗦𝗪𝗘𝗥𝗘𝗗✅\n━━━━━━━━━━━━━━━━\nPlease provide a question or statement.\n━━━━━━━━━━━━━━━━`, event.threadID, event.messageID);
+ return;
+ }
 
-
-      const response = await axios.get(`https://sandipbaruwal.onrender.com/gpt?prompt=${encodeURIComponent(prompt)}`);
-      const answer = response.data.answer;
-
- 
-    await message.reply(`⚙️\n${answer}\n⚙️𝑅𝑌𝑈𝑍𝐴𝐾𝐼 🇨🇩`);
-
-    } catch (error) {
-      console.error("Error:", error.message);
-    }
-  }
+ const { response, messageID } = await getAIResponse(input, event.senderID, event.messageID);
+ api.sendMessage(`𝗔𝗦𝗦𝗜𝗦𝗧𝗔𝗡𝗧 𝗔𝗡𝗦𝗪𝗘𝗥𝗘𝗗✅ \n━━━━━━━━━━━━━━━━\n${response}\n━━━━━━━━━━━━━━━━`, event.threadID, messageID);
+ },
+ onChat: async function ({ event, message }) {
+ const messageContent = event.body.trim().toLowerCase();
+ if (messageContent.startsWith("ai")) {
+ const input = messageContent.replace(/^ai\s*/, "").trim();
+ const { response, messageID } = await getAIResponse(input, event.senderID, message.messageID);
+ message.reply(`𝗔𝗦𝗦𝗜𝗦𝗧𝗔𝗡𝗧 𝗔𝗡𝗦𝗪𝗘𝗥𝗘𝗗✅\n━━━━━━━━━━━━━━━━\n${response}\n━━━━━━━━━━━━━━━━`, messageID);
+ }
+ }
 };
+─────────────────
+Reply this message to continue send message to admin
