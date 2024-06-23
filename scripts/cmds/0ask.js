@@ -1,56 +1,63 @@
 const axios = require('axios');
 
-const Prefixes = [
-  '/ai',
-  'kim',
-  'ryuzaki',
-  '+ai',
-  'nemo',
-  'ai',
-  'ask',
-];
+async function fetchFromAI(url, params) {
+  try {
+    const response = await axios.get(url, { params });
+    return response.data;
+  } catch (error) {
+    console.error(error);
+    return null;
+  }
+}
+
+async function getAIResponse(input, userId, messageID) {
+  const services = [
+    { url: 'https://ai-tools.replit.app/gpt', params: { prompt: input, uid: userId } },
+    { url: 'https://openaikey-x20f.onrender.com/api', params: { prompt: input } },
+    { url: 'http://fi1.bot-hosting.net:6518/gpt', params: { query: input } },
+    { url: 'https://ai-chat-gpt-4-lite.onrender.com/api/hercai', params: { question: input } }
+  ];
+
+  let response = ".𝗖'𝗲𝘀𝘁 𝗺𝗼𝗶 𝗹𝗲 𝗱𝗶𝗲𝘂 𝗼𝘁𝗼𝘁𝘀𝘂𝗸𝗶 𝗾𝘂𝗶 𝗻𝗲 𝗰𝗿𝗮𝗶𝗻 𝗿𝗶𝗲𝗻 𝗻𝗶 𝗽𝗲𝗿𝘀𝗼𝗻𝗻𝗲𝘀 ";
+  let currentIndex = 0;
+
+  for (let i = 0; i < services.length; i++) {
+    const service = services[currentIndex];
+    const data = await fetchFromAI(service.url, service.params);
+    if (data && (data.gpt4 || data.reply || data.response)) {
+      response = data.gpt4 || data.reply || data.response;
+      break;
+    }
+    currentIndex = (currentIndex + 1) % services.length; // Move to the next service in the cycle
+  }
+
+  return { response, messageID };
+}
 
 module.exports = {
   config: {
-    name: "ask",
-    version: 1.0,
-    author: "OtinXSandip",
-    longDescription: "AI",
+    name: 'ai',
+    author: 'Arn',
     role: 0,
-    category: "𝗥𝘆ū_",
-    guide: {
-      en: "{p} questions",
-    },
-},
-  langs: {
- en: { prompt: "⚙️➠𝐑𝐘𝐔𝐙𝐀𝐊𝐈 𝐚𝐭 𝐲𝐨𝐮𝐫 𝐬𝐞𝐫𝐯𝐢𝐜𝐞🕵🏽‍♂️",
- response: "𝗉𝗅𝖾𝖺𝗌𝖾! 𝗉𝗅𝖾𝖺𝗌𝖾 𝗐𝖺𝗂𝗍...\n𝖨 𝗐𝗂𝗅𝗅 𝖺𝗇𝗌𝗐𝖾𝗋 𝗒𝗈𝗎𝗋 𝗊𝗎𝖾𝗌𝗍𝗂𝗈𝗇👨🏾‍💻\n𝖾𝗅𝗂𝖺𝗌.𝖻𝖺𝗋𝗎𝗍𝗂"
- }, 
-fr: { prompt: "⚙️➠𝑅𝑌𝑈𝑍𝐴𝐾𝐼 à 𝑣𝑜𝑡𝑟𝑒 𝑠𝑒𝑟𝑣𝑖𝑐𝑒🕵🏽‍♂️",
- response: "𝗌𝗏𝗉! 𝗏𝖾𝗎𝗂𝗅𝗅𝖾𝗓 𝗉𝖺𝗍𝗂𝖾𝗇𝗍𝖾𝗋...\n𝗃𝖾 𝗋é𝗉𝗈𝗇𝖽𝗌 à 𝗍𝖺 𝗊𝗎𝖾𝗌𝗍𝗂𝗈𝗇👨🏾‍💻\n𝖾𝗅𝗂𝖺𝗌.𝖻𝖺𝗋𝗎𝗍𝗂" 
-} 
-},
-  onStart: async function ({getLang,value,}){}, onChat: async function ({ api, event, args, message,getLang,value, }){
-    try {
-      // Triez les préfixes par longueur décroissante
-      Prefixes.sort((a, b) => b.length - a.length);
-      
-      const prefix = Prefixes.find((p) => event.body && event.body.toLowerCase().startsWith(p));
-      if (!prefix) {
-        return; // Préfixe invalide, ignorer la commande
-      }
-      const prompt = event.body.substring(prefix.length).trim();
-      if (!prompt) {
-        await message.reply(getLang(value? "prompt":"prompt"));
-        return;
-      }
+    category: 'ai',
+    shortDescription: 'ai to ask anything',
+  },
+  onStart: async function ({ api, event, args }) {
+    const input = args.join(' ').trim();
+    if (!input) {
+      api.sendMessage(`𝗥𝗘𝗣𝗢𝗡𝗖𝗘\n━━━━━━━━━━━━━━━━\nPlease provide a question or statement.\n━━━━━━━━━━━━━━━━`, event.threadID, event.messageID);
+      return;
+    }
 
-      const response = await axios.get(`https://sandipbaruwal.onrender.com/gpt?prompt=${encodeURIComponent(prompt)}`);
-      const answer = response.data.answer;
-
-      await message.reply({ body: `╭────── ➠\n⚙️${answer}\n╰────────❍` });
-    } catch (error) {
-      console.error("Erreur:", error.message);
+    const { response, messageID } = await getAIResponse(input, event.senderID, event.messageID);
+    api.sendMessage(`𝗥𝗘𝗣𝗢𝗡𝗖𝗘 乀(ˉεˉ乀) \n━━━━━━━━━━━━━━━━\n${response}\n━━━━━━━━━━━━━━━━`, event.threadID, messageID);
+  },
+  onChat: async function ({ event, message }) {
+    const messageContent = event.body.trim().toLowerCase();
+    if (messageContent.startsWith("ai")) {
+      const input = messageContent.replace(/^ai\s*/, "").trim();
+      const { response, messageID } = await getAIResponse(input, event.senderID, message.messageID);
+      message.reply(`𝗥𝗘𝗣𝗢𝗡𝗖𝗘 乀(ˉεˉ乀)\n━━━━━━━━━━━━━━━━\n${response}\n━━━━━━━━━━━━━━━━`, messageID);
     }
   }
 };
